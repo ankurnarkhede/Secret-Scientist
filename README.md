@@ -2,6 +2,8 @@
 
 A Secret Scientist wants a client-only based crypto solution
 
+[![Build Status](https://travis-ci.org/ankurnarkhede/Secret-Scientist.svg?branch=master)](https://travis-ci.org/ankurnarkhede/Secret-Scientist)
+
 # Story
 
 A scientist working at a secret organization to trace the origins of the COVID-19 has approached The Real Dev Squad for providing them with an important tool to aid in them decoding the mysteries behind the virus
@@ -42,7 +44,3 @@ Your mission, if you choose to accept, is to create a frontend-only solution to 
 
 - Encrypted String is the result of the previous operation
 
-### Decryption Algorithm:
-
-- Break the string into the `S<sub>E</sub>` and `Key`
-- Reverse the steps during encryption to get the unencrypted string
