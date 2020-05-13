@@ -1,93 +1,235 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
+//declare vars
+$left-gradient: #56ab2f;
+$right-gradient: #a8e063;
+$theme-color: #56ab2f;
+$input-background: #f2f2f2;
+$monospaced-fonts: 'Ubuntu Mono', Consolas, Monaco, 'Andale Mono', monospace;
+$loader-size: 40px;
 
-a {
-  color: #00B7FF;
-}
+//z-index
+$overlay-z-index: 10;
 
 /*404 page starts*/
-*{
+* {
   transition: all 0.6s;
 }
 
 html {
   height: 100%;
+
+  body {
+    background: -webkit-linear-gradient(right, $left-gradient, $right-gradient);
+    background: -moz-linear-gradient(right, $left-gradient, $right-gradient);
+    background: -o-linear-gradient(right, $left-gradient, $right-gradient);
+    background: linear-gradient(to left, $left-gradient, $right-gradient);
+    background-color: $theme-color;
+    color: #fff;
+    font-family: $monospaced-fonts;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+  }
 }
 
-body{
-  font-family: 'Ubuntu Mono', sans-serif;
-  color: #888;
-  margin: 0;
-}
-
-#main{
+#main {
   display: table;
-  width: 100%;
+  margin: 10% 0;
   text-align: center;
-}
+  width: 100%;
 
-.fof{
-  display: table-cell;
-  vertical-align: middle;
-}
+  /*404 page starts*/
+  .fof {
+    display: table-cell;
+    vertical-align: middle;
+  }
 
-.fof h1{
-  font-size: 50px;
-  display: inline-block;
-  padding-right: 12px;
-  animation: type .5s alternate infinite;
-}
+  .fof h1 {
+    animation: type 0.5s alternate infinite;
+    display: inline-block;
+    font-size: 50px;
+    padding-right: 12px;
+  }
 
-@keyframes type{
-  from{box-shadow: inset -3px 0px 0px #888;}
-  to{box-shadow: inset -3px 0px 0px transparent;}
-}
-
-/*404 page ends*/
+  /*404 page ends*/
 
 
-/*Form*/
-.wrapper {
-  margin-top: 80px;
-  margin-bottom: 80px;
+  /*Form starts*/
+  .login-page {
+    margin: auto;
+    width: 35%;
+  }
 
-  .form-signin {
-    max-width: 380px;
-    padding: 15px 35px 45px;
+  .form {
+    background: #fff;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     margin: 0 auto;
-    background-color: #fff;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-  }
-  .form-signin .form-signin-heading,
-  .form-signin .checkbox {
-    margin-bottom: 30px;
-  }
-  .form-signin .checkbox {
-    font-weight: normal;
-  }
-  .form-signin .form-control {
+    padding: 45px;
     position: relative;
-    font-size: 16px;
-    height: auto;
-    padding: 10px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
+    text-align: center;
+    z-index: 1;
+
+    .raw-text {
+      text-transform: uppercase;
+    }
+
+    .result-container {
+      background-color: $input-background;
+      height: 100px;
+      margin: 2% 0;
+
+      .result-textarea {
+        background: $input-background;
+        height: 100%;
+        width: 98%;
+      }
+    }
+  }
+
+  .form input {
+    background: $input-background;
+    border: 0;
     box-sizing: border-box;
+    font-family: $monospaced-fonts;
+    font-size: 14px;
+    margin: 0 0 15px;
+    outline: 0;
+    padding: 15px;
+    width: 100%;
   }
-  .form-signin .form-control:focus {
-    z-index: 2;
+
+  .form button {
+    background: $theme-color;
+    border: 0;
+    color: #fff;
+    cursor: pointer;
+    font-family: $monospaced-fonts;
+    font-size: 16px;
+    outline: 0;
+    padding: 10px;
+    text-transform: uppercase;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    width: 100%;
   }
-  .form-signin input[type="text"] {
-    margin-bottom: -1px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+
+  .form button:hover,
+  .form button:active,
+  .form button:focus {
+    background: $theme-color;
   }
-  .form-signin input[type="password"] {
-    margin-bottom: 20px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
+
+  .form .message {
+    color: #b3b3b3;
+    font-size: 12px;
+    margin: 15px 0 0;
+  }
+
+  .form .message a {
+    color: $theme-color;
+    text-decoration: none;
+  }
+
+  .form .register-form {
+    display: none;
+  }
+
+  .container {
+    margin: 0 auto;
+    max-width: 300px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .container::before,
+  .container::after {
+    clear: both;
+    content: '';
+    display: block;
+  }
+
+  .container .info {
+    margin: 50px auto;
+    text-align: center;
+  }
+
+  .container .info h1 {
+    color: #1a1a1a;
+    font-size: 36px;
+    font-weight: 300;
+    margin: 0 0 15px;
+    padding: 0;
+  }
+
+  .container .info span {
+    color: #4d4d4d;
+    font-size: 12px;
+  }
+
+  .container .info span a {
+    color: #000;
+    text-decoration: none;
+  }
+
+  .container .info span .fa {
+    color: #ef3b3a;
+  }
+
+  /*Form ends*/
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+  bottom: 0;
+  display: none;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: $overlay-z-index;
+}
+
+.loader {
+  -webkit-animation: spin 0.7s linear infinite;
+  animation: spin 0.7s linear infinite;
+  border: 5px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 5px solid #3498db;
+  height: $loader-size;
+  left: 50%;
+  margin-left: -$loader-size/2;
+  margin-top: -$loader-size/2;
+  position: absolute;
+  top: 50%;
+  width: $loader-size;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
   }
 }
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+
+
+
+
 
